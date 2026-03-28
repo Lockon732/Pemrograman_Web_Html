@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Timmothea E. O. Landeng — Mahasiswa Teknik Informatika dengan minat di automasi, machine learning, dan algorithmic trading.">
+    <title>Teo — Home</title>
+    <style>
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: #111318;
+            color: #cdd4de;
+            line-height: 1.7;
+        }
+
+        a {
+            color: #7eb8f0;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* nav */
+        header {
+            background: rgba(17, 19, 24, 0.9);
+            border-bottom: 1px solid #222631;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            backdrop-filter: blur(8px);
+        }
+
+        nav {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 0.9rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.15rem;
+            color: #e4e8ef;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 1.8rem;
+        }
+
+        .nav-links a {
+            color: #808898;
+            font-size: 0.92rem;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.on {
+            color: #e4e8ef;
+            text-decoration: none;
+        }
+
+        /* hero */
+        .hero {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 5rem 1.5rem 3.5rem;
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero-text h1 {
+            font-size: 2.6rem;
+            color: #e4e8ef;
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 0.6rem;
+            letter-spacing: -1px;
+        }
+
+        .hero-text h2 {
+            font-size: 1.15rem;
+            color: #808898;
+            font-weight: 400;
+            margin-bottom: 1.2rem;
+        }
+
+        .hero-text p {
+            max-width: 480px;
+            color: #9aa1af;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 0.8rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.6rem 1.4rem;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.88rem;
+        }
+
+        .btn-fill {
+            background: #4f8dd9;
+            color: #fff;
+        }
+
+        .btn-fill:hover {
+            background: #3f7ac4;
+            text-decoration: none;
+        }
+
+        .btn-ghost {
+            border: 1px solid #2e3340;
+            color: #cdd4de;
+        }
+
+        .btn-ghost:hover {
+            border-color: #4f8dd9;
+            text-decoration: none;
+        }
+
+        .hero-img {
+            flex: 0 0 220px;
+        }
+
+        .avatar {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #222631;
+        }
+
+        /* sections */
+        .wrap {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem;
+        }
+
+        .wrap h3 {
+            font-size: 1.35rem;
+            color: #e4e8ef;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+        }
+
+        /* about */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem;
+        }
+
+        .card {
+            background: #181b22;
+            border: 1px solid #222631;
+            border-radius: 10px;
+            padding: 1.5rem;
+        }
+
+        .card:hover {
+            border-color: #333a4a;
+        }
+
+        .card h4 {
+            font-size: 1.05rem;
+            color: #e4e8ef;
+            margin-bottom: 0.2rem;
+        }
+
+        .card h5 {
+            font-size: 0.85rem;
+            color: #6b7385;
+            font-weight: 400;
+            margin-bottom: 0.7rem;
+        }
+
+        .card h6 {
+            font-size: 0.72rem;
+            color: #555d6e;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 0.4rem;
+        }
+
+        .card p {
+            color: #9aa1af;
+            font-size: 0.9rem;
+        }
+
+        .card ul,
+        .card ol {
+            padding-left: 1.1rem;
+            margin-top: 0.4rem;
+            color: #9aa1af;
+            font-size: 0.88rem;
+        }
+
+        .card ul li,
+        .card ol li {
+            margin-bottom: 0.15rem;
+        }
+
+        /* skill table */
+        .table-wrap {
+            background: #181b22;
+            border: 1px solid #222631;
+            border-radius: 10px;
+            padding: 1.8rem;
+            margin-top: 0.5rem;
+        }
+
+        .table-wrap>p {
+            color: #808898;
+            font-size: 0.88rem;
+            margin-bottom: 1.2rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            text-align: left;
+            padding: 0.65rem 1rem;
+            font-size: 0.78rem;
+            color: #6b7385;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 1px solid #272c38;
+        }
+
+        td {
+            padding: 0.6rem 1rem;
+            color: #9aa1af;
+            font-size: 0.88rem;
+            border-bottom: 1px solid #1e222b;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tbody tr:hover {
+            background: rgba(79, 141, 217, 0.04);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.15rem 0.55rem;
+            border-radius: 4px;
+            font-size: 0.73rem;
+            font-weight: 600;
+        }
+
+        .b-hi {
+            background: #1a3326;
+            color: #59c97a;
+        }
+
+        .b-md {
+            background: #192a3f;
+            color: #5fa8e0;
+        }
+
+        .b-lo {
+            background: #2b2618;
+            color: #c4a23e;
+        }
+
+        /* footer */
+        footer {
+            border-top: 1px solid #222631;
+            text-align: center;
+            padding: 1.8rem;
+            margin-top: 3rem;
+        }
+
+        footer p {
+            color: #555d6e;
+            font-size: 0.82rem;
+        }
+
+        @media (max-width: 700px) {
+            .hero {
+                flex-direction: column-reverse;
+                text-align: center;
+                padding-top: 3rem;
+            }
+
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+
+            .hero-btns {
+                justify-content: center;
+            }
+
+            .hero-img {
+                flex: none;
+            }
+
+            .avatar {
+                width: 150px;
+                height: 150px;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <a href="index.html" class="logo">Teo.</a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="on">Home</a></li>
+                <li><a href="pages/gallery.html">Galeri</a></li>
+                <li><a href="pages/blog.html">Blog</a></li>
+                <li><a href="pages/contact.html">Kontak</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-text">
+                <h1>Halo, saya Timmothea E. O. Landeng</h1>
+                <h2>Mahasiswa Teknik Informatika dengan minat di automasi, reverse engineering, dan machine learning.
+                </h2>
+                <p>
+                    Saat ini menempuh pendidikan S1 Teknik Informatika. Di luar perkuliahan,
+                    aktif mengembangkan berbagai proyek mandiri mulai dari bot automasi
+                    hingga market screener untuk analisis pasar kripto.
+                </p>
+                <div class="hero-btns">
+                    <a href="pages/contact.html" class="btn btn-fill">Kontak Saya</a>
+                    <a href="pages/gallery.html" class="btn btn-ghost">Lihat Proyek</a>
+                </div>
+            </div>
+            <aside class="hero-img">
+                <img class="avatar" src="assets/Profile_Picture.png" alt="Foto Teo">
+            </aside>
+        </section>
+
+        <section class="wrap">
+            <h3>Tentang Saya</h3>
+            <div class="about-grid">
+                <div class="card">
+                    <h4>Kuliah</h4>
+                    <h5>S1 Teknik Informatika</h5>
+                    <h6>Mata kuliah favorit</h6>
+                    <ol>
+                        <li>Struktur Data</li>
+                        <li>Kecerdasan Buatan</li>
+                        <li>Basis Data</li>
+                        <li>Jaringan Komputer</li>
+                    </ol>
+                </div>
+                <div class="card">
+                    <h4>Bidang Minat</h4>
+                    <h5>Fokus pengembangan dan eksplorasi teknis</h5>
+                    <h6>Passion saya</h6>
+                    <ul>
+                        <li>Machine Learning dan data analysis</li>
+                        <li>Algorithmic trading</li>
+                        <li>Reverse Engineering</li>
+                        <li>Automatisasi</li>
+                    </ul>
+                </div>
+                <div class="card" style="grid-column: 1 / -1;">
+                    <h4>Proyek yang Pernah Dikerjakan</h4>
+                    <h5>Kombinasi tugas perkuliahan dan eksperimen pribadi</h5>
+                    <p>
+                        Beberapa di antaranya: aplikasi habit tracker,
+                        bot trading crypto yang pakai indikator teknikal, dan market screener
+                        untuk filter pair koin crypto. Semuanya masih terus di-improve secara bertahap.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="wrap">
+            <h3>Kompetensi Teknis</h3>
+            <div class="table-wrap">
+                <p>Penilaian kemampuan berdasarkan pengalaman pengembangan proyek secara mandiri.</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Skill</th>
+                            <th>Kategori</th>
+                            <th>Level</th>
+                            <th>Pengalaman</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Python</strong></td>
+                            <td>Bahasa Pemrograman</td>
+                            <td><span class="badge b-md">Cukup mahir</span></td>
+                            <td>2 tahun</td>
+                        </tr>
+                        <tr>
+                            <td><strong>C++</strong></td>
+                            <td>Bahasa Pemrograman</td>
+                            <td><span class="badge b-lo">Dasar</span></td>
+                            <td>2 tahun</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Machine Learning</strong></td>
+                            <td>AI / Data Science</td>
+                            <td><span class="badge b-md">Cukup mahir</span></td>
+                            <td>2 tahun</td>
+                        </tr>
+                        <tr>
+                            <td><strong>HTML dan CSS</strong></td>
+                            <td>Web</td>
+                            <td><span class="badge b-md">Cukup mahir</span></td>
+                            <td>2 tahun</td>
+                        </tr>
+                        <tr>
+                            <td><strong>SQL / SQLite</strong></td>
+                            <td>Database</td>
+                            <td><span class="badge b-md">Cukup mahir</span></td>
+                            <td>2 tahun</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Reverse Engineering</strong></td>
+                            <td>Analisis Sistem</td>
+                            <td><span class="badge b-hi">Mahir</span></td>
+                            <td>2 tahun</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Git</strong></td>
+                            <td>Tools</td>
+                            <td><span class="badge b-hi">Mahir</span></td>
+                            <td>2 tahun</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Teo</p>
+    </footer>
+
+</body>
+
+</html>

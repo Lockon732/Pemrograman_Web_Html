@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Galeri proyek Teo — market screener bot, habit tracker, dan autostepper bot.">
+    <title>Teo — Galeri</title>
+    <style>
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: #111318;
+            color: #cdd4de;
+            line-height: 1.7;
+        }
+
+        a {
+            color: #7eb8f0;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        header {
+            background: rgba(17, 19, 24, 0.9);
+            border-bottom: 1px solid #222631;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            backdrop-filter: blur(8px);
+        }
+
+        nav {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 0.9rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.15rem;
+            color: #e4e8ef;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 1.8rem;
+        }
+
+        .nav-links a {
+            color: #808898;
+            font-size: 0.92rem;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.on {
+            color: #e4e8ef;
+            text-decoration: none;
+        }
+
+        .wrap {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem;
+        }
+
+        .page-title {
+            padding: 4rem 1.5rem 1rem;
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        .page-title h1 {
+            font-size: 2.2rem;
+            color: #e4e8ef;
+            font-weight: 800;
+            letter-spacing: -0.8px;
+            margin-bottom: 0.3rem;
+        }
+
+        .page-title p {
+            color: #808898;
+            max-width: 520px;
+        }
+
+        /* project section */
+        .project {
+            background: #181b22;
+            border: 1px solid #222631;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+        }
+
+        .project:hover {
+            border-color: #2d3344;
+        }
+
+        .project-inner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+        }
+
+        .project-img {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #15181f;
+            padding: 1.5rem;
+            min-height: 280px;
+        }
+
+        .project-img img {
+            max-height: 320px;
+            width: auto;
+            border-radius: 8px;
+            border: 1px solid #272c38;
+        }
+
+        .project-img.wide img {
+            width: 100%;
+            max-height: none;
+            object-fit: cover;
+        }
+
+        .project-body {
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .project-body .category-label {
+            font-size: 0.7rem;
+            color: #555d6e;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 0.4rem;
+        }
+
+        .project-body h2 {
+            font-size: 1.3rem;
+            color: #e4e8ef;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        .project-body p {
+            color: #9aa1af;
+            font-size: 0.88rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .project-body h5 {
+            font-size: 0.85rem;
+            color: #9aa1af;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        .project-body ol,
+        .project-body ul {
+            padding-left: 1.2rem;
+            color: #808898;
+            font-size: 0.85rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .project-body ol li,
+        .project-body ul li {
+            margin-bottom: 0.15rem;
+        }
+
+        .tags-inline {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.35rem;
+            margin-top: 0.5rem;
+        }
+
+        .tags-inline li {
+            font-size: 0.7rem;
+            padding: 0.15rem 0.5rem;
+            border-radius: 4px;
+            background: #1e222b;
+            color: #808898;
+            border: 1px solid #272c38;
+        }
+
+        /* detail cards */
+        .detail-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 1.2rem;
+            margin-top: 1rem;
+        }
+
+        .d-card {
+            background: #181b22;
+            border: 1px solid #222631;
+            border-radius: 10px;
+            padding: 1.3rem;
+        }
+
+        .d-card:hover {
+            border-color: #333a4a;
+        }
+
+        .d-card h4 {
+            font-size: 0.95rem;
+            color: #e4e8ef;
+            margin-bottom: 0.15rem;
+        }
+
+        .d-card h5 {
+            font-size: 0.78rem;
+            color: #6b7385;
+            font-weight: 400;
+            margin-bottom: 0.4rem;
+        }
+
+        .d-card p {
+            color: #9aa1af;
+            font-size: 0.82rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* table */
+        .table-card {
+            background: #181b22;
+            border: 1px solid #222631;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .table-card>p {
+            color: #808898;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            text-align: left;
+            padding: 0.55rem 0.8rem;
+            font-size: 0.72rem;
+            color: #6b7385;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 1px solid #272c38;
+        }
+
+        td {
+            padding: 0.5rem 0.8rem;
+            color: #9aa1af;
+            font-size: 0.85rem;
+            border-bottom: 1px solid #1e222b;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tbody tr:hover {
+            background: rgba(79, 141, 217, 0.04);
+        }
+
+        footer {
+            border-top: 1px solid #222631;
+            text-align: center;
+            padding: 1.8rem;
+            margin-top: 3rem;
+        }
+
+        footer p {
+            color: #555d6e;
+            font-size: 0.82rem;
+        }
+
+        @media (max-width: 700px) {
+            .project-inner {
+                grid-template-columns: 1fr;
+            }
+
+            .project-img {
+                min-height: auto;
+                padding: 1rem;
+            }
+
+            .detail-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .page-title h1 {
+                font-size: 1.7rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="../index.html" class="logo">Teo.</a>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="gallery.html" class="on">Galeri</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="contact.html">Kontak</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-title">
+            <h1>Galeri Proyek</h1>
+            <p>Tiga proyek yang paling sering dikembangkan. Masing-masing dari kebutuhan praktis
+                maupun passion.</p>
+        </section>
+
+        <section class="wrap" style="padding-top: 2rem;">
+            <div class="project">
+                <div class="project-inner">
+                    <div class="project-img">
+                        <img src="../assets/img_market_screener.png" alt="Screenshot Telegram Bot Market Screener">
+                    </div>
+                    <div class="project-body">
+                        <p class="category-label">Python, CCXT dan SQLite</p>
+                        <h2>Market Screener Bot — Indodax</h2>
+                        <p>
+                            Bot Market Screener yang memindai pasar kripto di Indodax secara
+                            real-time, dengan fokus pada pair berlikuiditas rendah. Dirancang untuk mendeteksi
+                            anomali volume dan pergerakan agresif di pasar (Pump, Dump, atau akumulasi paus).
+                        </p>
+                        <p>
+                            Bot ini mengkalkulasi Volume Profile, membuat 15m
+                            candle langsung dari data transaksi, serta men-cross check berbagai exchange (Binance,
+                            Gate.io, MEXC) untuk deteksi Maintenance.
+                        </p>
+                        <h5>Fitur utama:</h5>
+                        <ul>
+                            <li>Menscan otomatis seluruh pair IDR dengan Liquidity Filter</li>
+                            <li>Klasifikasi ukuran transaksi (Shrimp, Whale, hingga Leviathan)</li>
+                            <li>Global Price Gap Analysis untuk mendeteksi arbitrase atau jebakan maintenance</li>
+                            <li>Kalkulasi Buy Pressure dinamis berdasarkan Volume Delta</li>
+                            <li>Penyimpanan log real-time menggunakan SQLite (WAL Mode) untuk dataset AI masa depan
+                            </li>
+                        </ul>
+                        <ul class="tags-inline">
+                            <li>Python</li>
+                            <li>CCXT</li>
+                            <li>SQLite</li>
+                            <li>Pandas</li>
+                            <li>Telegram Bot API</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="wrap" style="padding-top: 0;">
+            <div class="project">
+                <div class="project-inner">
+                    <div class="project-body">
+                        <p class="category-label">Android App — Rekayasa Perangkat Lunak</p>
+                        <h2>Habit Tracker</h2>
+                        <p>
+                            Aplikasi Android ini merupakan luaran proyek dari mata kuliah Rekayasa Perangkat Lunak
+                            (RPL). Sistem ini dikembangkan untuk memantau rutinitas harian dengan antarmuka yang
+                            intuitif dan fungsional. Salah satu sorotan utamanya adalah fitur kalender bulanan yang
+                            warnanya beradaptasi secara dinamis sesuai dengan persentase konsistensi pengguna.
+                        </p>
+                        <p>
+                            Aplikasi ini dibekali dengan antarmuka manajemen data yang lengkap, memungkinkan pengguna
+                            untuk melakukan personalisasi terhadap setiap kebiasaan yang ingin dilacak, sehingga sangat
+                            efektif berfungsi sebagai instrumen pengingat visual.
+                        </p>
+                        <h5>Fitur utama:</h5>
+                        <ol>
+                            <li>Manajemen rutinitas (CRUD) yang mencakup penambahan, pengubahan, dan penghapusan
+                                kebiasaan, lengkap dengan kustomisasi ikon/emoji.</li>
+                            <li>Kalender bulanan dengan indikator warna berbasis persentase progres harian (0%, 20%,
+                                60%, 100%).</li>
+                            <li>Pemantauan rentetan (streak) secara spesifik untuk masing-masing rutinitas.
+                            </li>
+                            <li>Ringkasan statistik harian yang menampilkan total target, pencapaian, dan persentase
+                                keberhasilan.</li>
+                        </ol>
+                        <ul class="tags-inline">
+                            <li>Android</li>
+                            <li>Java</li>
+                            <li>SQLite</li>
+                            <li>Software Engineering</li>
+                        </ul>
+                    </div>
+                    <div class="project-img">
+                        <img src="../assets/img_habit_tracker.jpg" alt="Screenshot Habit Tracker App">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="wrap" style="padding-top: 0;">
+            <div class="project">
+                <div class="project-inner">
+                    <div class="project-img wide">
+                        <img src="../assets/img_autostepper.png" alt="Screenshot Autostepper Bot di VS Code">
+                    </div>
+                    <div class="project-body">
+                        <p class="category-label">Python — Desktop Automation</p>
+                        <h2>Autostepper — Vision-Based Game Bot</h2>
+                        <p>
+                            Program automation berbasis computer vision yang dibuat untuk mengoperasikan
+                            game browser secara otonom. Bot ini memanfaatkan library PyAutoGUI untuk melakukan
+                            image matching pada layar secara real-time,
+                            kemudian mengeksekusi aksi klik dengan simulasi gerakan kursor menyerupai manusia.
+                        </p>
+                        <p>
+                            Sistem ini memiliki dua mode operasi utama: Stepping Mode yang
+                            menangani eksplorasi, pengumpulan sumber daya, dan pertarungan otomatis; serta
+                            Arena Grind Mode yang melakukan farming PvE Arena secara berulang
+                            hingga energi habis, dilengkapi dengan timer recharge otomatis.
+                        </p>
+                        <h5>Fitur utama:</h5>
+                        <ol>
+                            <li>Deteksi elemen UI berbasis template matching dengan threshold confidence yang
+                                dapat dikonfigurasi (0.80 – 0.90).</li>
+                            <li>Simulasi klik humanized dengan randomisasi posisi dan durasi gerakan kursor
+                                menggunakan easing function.</li>
+                            <li>Dual-mode operation: Stepping (eksplorasi + gathering + combat) dan Arena Grind
+                                (farming otomatis dengan manajemen energi).</li>
+                            <li>Sistem deteksi CAPTCHA dengan notifikasi suara dan alert ke Discord via Webhook.</li>
+                            <li>Validasi aset gambar otomatis saat startup untuk mencegah error runtime.</li>
+                        </ol>
+                        <ul class="tags-inline">
+                            <li>Python</li>
+                            <li>PyAutoGUI</li>
+                            <li>Keyboard</li>
+                            <li>Discord Webhook</li>
+                            <li>Computer Vision</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="wrap">
+            <h3 style="font-size: 1.2rem; color: #e4e8ef; margin-bottom: 1rem;">Detail teknis di balik setiap proyek
+            </h3>
+            <div class="detail-grid">
+                <div class="d-card">
+                    <h4>Market Screener Logic</h4>
+                    <h5>Python dan CCXT</h5>
+                    <p>Inti algoritma: mengukur lonjakan Volume Delta dan Buy Pressure, kemudian
+                        membandingkan harga koin lokal di Indodax dengan pasar global melalui library CCXT.
+                        Apabila terdapat celah harga melebihi 15%, bot melabelinya sebagai "TRAP" guna
+                        mencegah jebakan maintenance.</p>
+                </div>
+                <div class="d-card">
+                    <h4>Streak Counter</h4>
+                    <h5>Habit Tracker</h5>
+                    <p>Penghitungan streak menggunakan logika sekuensial — sistem memeriksa apakah
+                        rutinitas pada hari sebelumnya telah diselesaikan. Jika terpenuhi, nilai streak
+                        bertambah satu; jika tidak, direset ke nol. Seluruh data tersimpan secara lokal
+                        di SQLite.</p>
+                </div>
+                <div class="d-card">
+                    <h4>Vision Pipeline</h4>
+                    <h5>Autostepper</h5>
+                    <p>Inti algoritmanya: setiap loop, bot melakukan pemindaian layar menggunakan
+                        template matching (PyAutoGUI + OpenCV). Setiap elemen UI yang terdeteksi akan
+                        di-klik dengan koordinat yang diacak dan durasi gerakan kursor bervariasi
+                        untuk simulasi perilaku manusia.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="wrap">
+            <h3 style="font-size: 1.2rem; color: #e4e8ef; margin-bottom: 1rem;">Tech Stack</h3>
+            <div class="table-card">
+                <p>Rangkuman teknologi dan pustaka yang digunakan pada setiap proyek.</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Proyek</th>
+                            <th>Bahasa</th>
+                            <th>Platform</th>
+                            <th>Tools / Library</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Market Screener</strong></td>
+                            <td>Python</td>
+                            <td>Telegram / Indodax</td>
+                            <td>SQLite, CCXT, Pandas, Requests</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Habit Tracker</strong></td>
+                            <td>Java</td>
+                            <td>Android</td>
+                            <td>SQLite, Material Design</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Autostepper</strong></td>
+                            <td>Python</td>
+                            <td>Windows (Desktop)</td>
+                            <td>PyAutoGUI, Keyboard, Discord Webhook</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Teo</p>
+    </footer>
+</body>
+
+</html>

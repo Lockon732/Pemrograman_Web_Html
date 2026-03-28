@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Blog Teo — Artikel seputar automasi, analisis data, dan eksplorasi teknologi.">
+    <title>Teo — Blog</title>
+    <style>
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: #111318;
+            color: #cdd4de;
+            line-height: 1.7;
+        }
+
+        a {
+            color: #7eb8f0;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 8px;
+        }
+
+        /* --- NAVIGASI --- */
+        header {
+            background: rgba(17, 19, 24, 0.9);
+            border-bottom: 1px solid #222631;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            backdrop-filter: blur(8px);
+        }
+
+        nav {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 0.9rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.15rem;
+            color: #e4e8ef;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 1.8rem;
+        }
+
+        .nav-links a {
+            color: #808898;
+            font-size: 0.92rem;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.on {
+            color: #e4e8ef;
+            text-decoration: none;
+        }
+
+        /* --- KONTEN UTAMA --- */
+        .wrap {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem;
+        }
+
+        .page-title {
+            padding: 4rem 1.5rem 1rem;
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        .page-title h1 {
+            font-size: 2.2rem;
+            color: #e4e8ef;
+            font-weight: 800;
+            letter-spacing: -0.8px;
+            margin-bottom: 0.3rem;
+        }
+
+        .page-title p {
+            color: #808898;
+            max-width: 520px;
+        }
+
+        /* --- LAYOUT BLOG --- */
+        .blog-layout {
+            max-width: 740px;
+            margin: 1rem auto 0;
+        }
+
+        article {
+            background: #181b22;
+            border: 1px solid #222631;
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        article:hover {
+            border-color: #333a4a;
+        }
+
+        .post-meta {
+            font-size: 0.75rem;
+            color: #555d6e;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.8rem;
+        }
+
+        article h2 {
+            font-size: 1.4rem;
+            color: #e4e8ef;
+            margin-bottom: 0.8rem;
+            line-height: 1.3;
+        }
+
+        article p {
+            color: #9aa1af;
+            font-size: 0.92rem;
+            margin-bottom: 1rem;
+        }
+
+        article h3 {
+            font-size: 0.95rem;
+            color: #cdd4de;
+            margin-top: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        article ul,
+        article ol {
+            padding-left: 1.5rem;
+            color: #9aa1af;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+
+
+        /* --- FOOTER --- */
+        footer {
+            border-top: 1px solid #222631;
+            text-align: center;
+            padding: 1.8rem;
+            margin-top: 3rem;
+        }
+
+        footer p {
+            color: #555d6e;
+            font-size: 0.82rem;
+        }
+
+        @media (max-width: 700px) {
+            .page-title h1 {
+                font-size: 1.7rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="../index.html" class="logo">Teo.</a>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="gallery.html">Galeri</a></li>
+                <li><a href="blog.html" class="on">Blog</a></li>
+                <li><a href="contact.html">Kontak</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-title">
+            <h1>Blog dan Eksplorasi</h1>
+            <p>Kumpulan tulisan mengenai eksperimen teknis, analisis data, dan observasi pribadi.</p>
+        </section>
+
+        <section class="wrap blog-layout">
+            <div class="articles">
+
+                <article>
+                    <div class="post-meta">Computer Vision &middot; 24 Mar 2026</div>
+                    <h2>Tantangan Membangun Bot Vision-Based menggunakan PyAutoGUI</h2>
+                    <p>
+                        Dalam pengembangan proyek <em>Autostepper</em>, salah satu kendala terbesar adalah memastikan
+                        tingkat akurasi pemindaian layar (<em>screen parsing</em>). Berbeda dengan injeksi memori atau
+                        intersepsi paket jaringan, bot berbasis penglihatan komputer (<em>computer vision</em>) harus
+                        murni mengandalkan pencocokan templat (<em>template matching</em>) dan analisis piksel. Berikut
+                        adalah beberapa tantangan teknis terbesar yang saya hadapi dan bagaimana arsitektur bot
+                        berevolusi untuk menyelesaikannya.
+                    </p>
+
+                    <h3>1. Anomali Subpixel Anti-Aliasing (ClearType)</h3>
+                    <p>
+                        Masalah pertama muncul ketika bot gagal mengenali tombol antarmuka yang tampak identik secara
+                        kasat mata. Setelah membedah piksel pada tangkapan layar, saya menemukan bahwa teks berwarna
+                        "putih" sebenarnya tidak murni putih. Sistem operasi menggunakan <em>Subpixel Anti-Aliasing</em>
+                        untuk memperhalus ujung teks, menghasilkan pinggiran warna acak seperti
+                        <code>(232, 200, 162)</code> (persik) atau <code>(178, 210, 238)</code> (biru muda).
+                    </p>
+                    <p>
+                        Karena posisi tombol selalu bergeser dalam kisi piksel peramban (<em>browser pixel grid</em>),
+                        pola warna ini berubah-ubah setiap saat, membuat algoritma deteksi gambar standar kebingungan.
+                        Solusinya ternyata sangat elegan: saya menyuntikkan parameter <code>grayscale=True</code> ke
+                        dalam modul penglihatan bot. Ini secara instan melucuti semua data warna dan memaksa bot hanya
+                        mengevaluasi bentuk (<em>shape</em>) hitam-putih, menetralisir efek <em>anti-aliasing</em>
+                        sepenuhnya.
+                    </p>
+
+                    <h3>2. Inkonsistensi UI dan CSS :hover State</h3>
+                    <p>
+                        Pengembang web sering kali menggunakan pseudo-class <code>:hover</code> pada CSS. Saat kursor
+                        mouse berada di atas tombol, warnanya berubah terang (perak), namun saat diabaikan, ia kembali
+                        ke warna dasar yang sangat gelap. Karena bot memindahkan kursor menjauh saat jeda, ia selalu
+                        melihat tombol dalam <em>resting state</em> yang nyaris hitam pekat.
+                    </p>
+                    <p>
+                        Keadaan menjadi lebih rumit ketika saya menyadari bahwa tombol yang sudah habis
+                        (<em>depleted</em>) juga menggunakan latar belakang gelap yang identik. Bot secara keliru
+                        terus-menerus mengklik batu yang sudah hancur karena mengira itu adalah tombol aktif.
+                    </p>
+
+                    <h3>3. Rekayasa "Luminosity Scanner"</h3>
+                    <p>
+                        Untuk mengatasi inkonsistensi warna tombol, saya membuang logika pengecekan piksel statis dan
+                        merancang sebuah <strong>Luminosity Scanner</strong>. Daripada mencari kode RGB tertentu, bot
+                        diprogram untuk memindai sebuah garis horizontal melintasi tengah tombol dan mencari piksel
+                        dengan kecerahan rata-rata tertinggi.
+                    </p>
+                    <p>
+                        Tombol yang aktif akan memiliki teks putih terang atau latar belakang perak (menghasilkan nilai
+                        kecerahan tinggi). Sementara itu, tombol yang mati hanya memiliki teks abu-abu redup. Dengan
+                        menetapkan ambang batas kecerahan (<em>brightness threshold</em>) di angka 160, bot kini dapat
+                        mengabaikan tombol mati dan mengekstraksi sumber daya dengan akurasi 100% tanpa perlu menghafal
+                        satu pun kode RGB.
+                    </p>
+
+                    <h3>4. Manajemen State dan "Dead Reckoning"</h3>
+                    <p>
+                        Tantangan terakhir adalah efisiensi. Memindai UI secara terus-menerus untuk mengecek sisa energi
+                        (yang maksimal berjumlah 16 poin) sangat tidak efisien dan rentan terdeteksi. Karena setiap poin
+                        energi membutuhkan waktu 5 menit untuk beregenerasi, saya mengimplementasikan teknik navigasi
+                        <em>Dead Reckoning</em>.
+                    </p>
+                    <p>
+                        Ketika energi habis, bot secara otomatis menyetel kronometer internal selama 80 menit dan
+                        kembali ke mode penjelajahan (<em>stepping mode</em>). Tepat pada milidetik ketika waktu
+                        tersebut habis, bot membajak <em>loop</em> utamanya sendiri, beralih ke mode arena, dan menguras
+                        energinya kembali secara otonom.
+                    </p>
+
+                    <h3>Kesimpulan</h3>
+                    <p>
+                        Membangun makro bukan sekadar merekam klik <em>mouse</em>. Ini adalah tentang membangun
+                        <em>State
+                            Machine</em> yang tangguh. Dengan membungkus semua logika ke dalam arsitektur
+                        <em>Object-Oriented</em> (OOP) yang mendefinisikan <code>BotState</code> dan kelas
+                        <code>Config</code> sentral, proyek ini berevolusi dari skrip sederhana menjadi entitas automasi
+                        yang sepenuhnya mandiri.
+                    </p>
+                </article>
+
+                <article>
+                    <div class="post-meta">Esports Analytics &middot; 28 Mar 2026</div>
+                    <h2>Pergeseran Paradigma Menuju Mythical Immortal: Mengapa Draft Memegang 60% Kemenangan</h2>
+                    <p>
+                        Setelah saya berhasil menembus 100 bintang dan mengamankan rank <strong>Mythical
+                            Immortal</strong>
+                        dengan <em>win rate</em> 62.5% dalam 272 pertandingan, sebuah realitas sistematis menjadi sangat
+                        jelas. Sistem kompetitif di tingkat elit ini, yang dihuni kurang dari 1% dari total pemain,
+                        beroperasi dengan algoritma dan aturan main yang sama sekali berbeda.
+                    </p>
+                    <p>
+                        Banyak pemain yang mengalami stagnasi karena mereka gagal melakukan transisi mental dari
+                        permainan yang mengandalkan otot (<em>mikro</em>) ke permainan yang mengandalkan otak
+                        (<em>makro</em> dan <em>drafting</em>). Berikut adalah bedah analitis dari fenomena ini.
+                    </p>
+
+                    <h3>1. Supremasi Mikro di Bawah Immortal</h3>
+                    <p>
+                        Di ekosistem rank bawah hingga awal Mythic, dinamika permainan sangat didominasi oleh kemampuan
+                        <strong>Mikro Hero</strong> yang berfokus pada keterampilan individu. Jika seseorang memiliki
+                        penguasaan mekanik yang superior—seperti kecepatan tangan, akurasi, dan refleks motorik—ia bisa
+                        mendominasi jalur dan membawa tim menuju kemenangan secara sepihak. Di level ini, kesalahan
+                        penempatan posisi lawan dapat dihukum secara instan murni melalui kecepatan reaksi.
+                    </p>
+                    <p>
+                        Namun, ketika memasuki gerbang Immortal, mekanik tinggi berhenti menjadi senjata rahasia dan
+                        berubah menjadi spesifikasi standar. Mengandalkan keterampilan tangan murni (mikro) tidak akan
+                        lagi cukup untuk mendaki ke puncak peringkat secara konsisten.
+                    </p>
+
+                    <h3>2. Evolusi Makro di Immortal</h3>
+                    <p>
+                        Faktor pemisah utama antara pemain Immortal dengan pemain Honor atau Glory terletak pada
+                        pemahaman <strong>Makro</strong> yang presisi. Di arena ini, permainan dimenangkan dengan
+                        strategi dan kecerdasan.
+                    </p>
+                    <ul>
+                        <li><strong>Rotasi dan Prioritas Objektif:</strong> Makro menuntut pemahaman atas strategi tim
+                            secara menyeluruh, terutama dalam penguasaan objektif krusial seperti Turtle, Lord, dan
+                            Turret. Keputusan analitis mengenai kapan harus berotasi, serta kapan harus mengamankan atau
+                            merelakan sebuah objektif, menjadi penentu arus permainan.</li>
+                        <li><strong>Kontrol Peta (Map Control):</strong> Area ini mencakup manajemen arah dan tempo
+                            gelombang minion (seperti taktik <em>slow push</em> atau <em>hard push</em>) untuk
+                            menciptakan tekanan dan memaksimalkan keunggulan ekonomi.</li>
+                    </ul>
+
+                    <table style="width: 100%; border-collapse: collapse; margin-top: 1rem; margin-bottom: 1rem;">
+                        <thead>
+                            <tr style="border-bottom: 1px solid #272c38; text-align: left;">
+                                <th style="padding: 0.5rem; color: #6b7385;">Faktor Kemenangan</th>
+                                <th style="padding: 0.5rem; color: #6b7385;">Dampak thd Win Rate</th>
+                                <th style="padding: 0.5rem; color: #6b7385;">Fokus Utama</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="border-bottom: 1px solid #1e222b;">
+                                <td style="padding: 0.5rem; color: #9aa1af;">Draft Pick dan Komposisi</td>
+                                <td style="padding: 0.5rem; color: #9aa1af;">~60%</td>
+                                <td style="padding: 0.5rem; color: #9aa1af;">Sinergi hero dan Counter-pick</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #1e222b;">
+                                <td style="padding: 0.5rem; color: #9aa1af;">Makro dan Map Awareness</td>
+                                <td style="padding: 0.5rem; color: #9aa1af;">~25%</td>
+                                <td style="padding: 0.5rem; color: #9aa1af;">Rotasi dan Prioritas Objektif</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 0.5rem; color: #9aa1af;">Mikro dan Mekanik Motorik</td>
+                                <td style="padding: 0.5rem; color: #9aa1af;">~15%</td>
+                                <td style="padding: 0.5rem; color: #9aa1af;">Eksekusi combo dan Waktu respons</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p>
+                        Pemain yang terbiasa menggunakan segelintir hero andalan akan sangat menderita jika hero
+                        tersebut terkena <em>ban</em> atau di-<em>counter</em> secara spesifik oleh lawan. Sistem
+                        <em>draft pick</em> memaksa setiap pemain untuk memiliki fleksibilitas, kita harus siap keluar
+                        dari peran (<em>role</em>) kenyamanan kita untuk melengkapi komposisi tim yang ideal.
+                        Mengamankan keunggulan sistematis lewat taktik <em>counter-pick</em> jauh lebih bernilai
+                        daripada memaksakan ego pahlawan mekanik yang rentan diculik.
+                    </p>
+
+                    <h3>Kesimpulan</h3>
+                    <p>
+                        Mythical Immortal bukanlah sekadar etalase untuk memamerkan kecepatan jari. Ini adalah ruang
+                        lingkup seorang arsitek sistem yang memahami bahwa kemenangan divalidasi oleh eksekusi
+                        <em>draft</em> yang superior secara statistik (60%), penguasaan ruang melalui makro yang
+                        disiplin, dan penggunaan mikro hanya sebagai piranti pelengkap untuk merangkai rencana besar
+                        tersebut.
+                    </p>
+                </article>
+
+                <article>
+                    <div class="post-meta">Automasi dan Data Engineering &middot; 28 Mar 2026</div>
+                    <h2>Evolusi Bot Indodax: Mengatasi "Maintenance Trap" dan Migrasi SQLite</h2>
+                    <p>
+                        Mengembangkan bot <em>Market Screener</em> untuk Indodax ternyata jauh lebih menantang daripada
+                        sekadar membaca <em>orderbook</em>. Bot yang saya kembangkan kini telah mencapai versi V11.0,
+                        berevolusi dari skrip pemantau sederhana menjadi sistem berkecepatan tinggi yang ditenagai oleh
+                        <em>Global Oracle</em> dan <em>Database Engine</em>.
+                    </p>
+                    <p>
+                        Fokus utama bot ini adalah mendeteksi anomali volume dan pergerakan agresif pada koin-koin
+                        berlikuiditas rendah. Selama proses pengembangannya, terdapat beberapa tantangan teknis krusial
+                        yang menuntut perombakan arsitektur.
+                    </p>
+
+                    <h3>1. Jebakan "Maintenance Trap"</h3>
+                    <p>
+                        Di bursa pertukaran kripto, sering terjadi anomali di mana harga sebuah koin tiba-tiba melonjak
+                        (<em>pump</em>) secara tidak wajar. Namun, seringkali ini adalah jebakan ilusi likuiditas. Hal
+                        ini terjadi saat bursa sedang melakukan pemeliharaan (<em>maintenance</em>) jaringan koin
+                        tersebut, menutup akses deposit, dan membuat pasokan lokal menjadi langka—padahal harga
+                        globalnya diam di tempat.
+                    </p>
+                    <p>
+                        Untuk mengatasinya, saya mengintegrasikan modul <em>Global Oracle</em> menggunakan
+                        <em>library</em> CCXT. Bot kini secara instan mengecek harga wajar di bursa raksasa seperti
+                        Binance, Gate.io, dan MEXC. Jika harga lokal Indodax terdeteksi melonjak lebih dari 15% di atas
+                        harga global, bot akan memblokir sinyal <em>buy</em> dan melabelinya sebagai "💀 TRAP".
+                        Sebaliknya, jika harga lokal terdiskon di bawah -3%, sistem akan menangkapnya sebagai peluang
+                        arbitrase ("💎 DISC").
+                    </p>
+
+                    <h3>2. Anomali API dan Koin "Meme"</h3>
+                    <p>
+                        Tantangan lainnya berasal dari ketidaksempurnaan data API. Beberapa token baru yang sedang tren,
+                        seperti TROLLSOL, terkadang gagal ditarik oleh sistem pembaruan otomatis sehingga bot
+                        mengklasifikasikannya sebagai koin lokal murni.
+                    </p>
+                    <p>
+                        Solusinya adalah menerapkan injeksi manual ke dalam struktur <em>Whitelist</em>. Token-token
+                        spesifik yang luput dari radar API dipaksa masuk ke dalam daftar identitas "Global", memastikan
+                        perhitungan <em>price gap</em> tetap berjalan akurat tanpa harus bergantung sepenuhnya pada
+                        respons API.
+                    </p>
+
+                    <h3>3. Perombakan Total: Dari CSV ke SQLite</h3>
+                    <p>
+                        Pada versi-versi awal, bot ini diinstruksikan untuk mencatat seluruh metrik pasar (seperti
+                        <em>Volume Delta</em>, <em>Buy Pressure</em>, dan <em>15m Candles</em>) secara konstan ke dalam
+                        file CSV. Namun, ketika ukuran kumpulan data (<em>dataset</em>) membengkak melewati 60.000
+                        baris, metode ini mulai memicu pelambatan (<em>latency</em>) dan risiko <em>memory leak</em>.
+                    </p>
+                    <p>
+                        Solusi mutlaknya adalah migrasi basis data. Seluruh operasional pencatatan dipindahkan ke
+                        SQLite. Dengan mengaktifkan konfigurasi <em>Write-Ahead Logging</em> (WAL), bot V11.0 kini mampu
+                        menelan dan menyimpan jutaan data pergerakan harga <em>real-time</em> dengan kecepatan sangat
+                        tinggi. Kumpulan data bersih yang tersimpan di dalam SQLite inilah yang kelak akan menjadi
+                        fondasi untuk melatih model <em>Machine Learning</em> di tahap selanjutnya.
+                    </p>
+                </article>
+
+            </div>
+
+
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Teo</p>
+    </footer>
+</body>
+
+</html>

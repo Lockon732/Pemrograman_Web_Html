@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Kontak Teo — formulir kontak dan media sosial.">
+    <title>Teo — Kontak</title>
+    <style>
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: #111318;
+            color: #cdd4de;
+            line-height: 1.7;
+        }
+
+        a {
+            color: #7eb8f0;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        header {
+            background: rgba(17, 19, 24, 0.9);
+            border-bottom: 1px solid #222631;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            backdrop-filter: blur(8px);
+        }
+
+        nav {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 0.9rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.15rem;
+            color: #e4e8ef;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 1.8rem;
+        }
+
+        .nav-links a {
+            color: #808898;
+            font-size: 0.92rem;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.on {
+            color: #e4e8ef;
+            text-decoration: none;
+        }
+
+        .page-title {
+            padding: 4rem 1.5rem 1rem;
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        .page-title h1 {
+            font-size: 2.2rem;
+            color: #e4e8ef;
+            font-weight: 800;
+            letter-spacing: -0.8px;
+            margin-bottom: 0.3rem;
+        }
+
+        .page-title p {
+            color: #808898;
+            max-width: 480px;
+        }
+
+        /* layout */
+        .contact-layout {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem 3rem;
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 2rem;
+            align-items: start;
+        }
+
+        /* form */
+        .form-box {
+            background: #181b22;
+            border: 1px solid #222631;
+            border-radius: 10px;
+            padding: 2rem;
+        }
+
+        .form-box h2 {
+            font-size: 1.2rem;
+            color: #e4e8ef;
+            margin-bottom: 0.2rem;
+        }
+
+        .form-box .form-subtitle {
+            font-size: 0.7rem;
+            color: #555d6e;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 1rem;
+        }
+
+        .form-box p {
+            color: #808898;
+            font-size: 0.85rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.8rem;
+        }
+
+        .field {
+            margin-bottom: 0.9rem;
+        }
+
+        .field label {
+            display: block;
+            font-size: 0.8rem;
+            color: #808898;
+            margin-bottom: 0.3rem;
+            font-weight: 500;
+        }
+
+        .field label span {
+            color: #c47a7a;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 0.6rem 0.8rem;
+            background: #1e222b;
+            border: 1px solid #272c38;
+            border-radius: 6px;
+            color: #cdd4de;
+            font-family: inherit;
+            font-size: 0.88rem;
+            outline: none;
+        }
+
+        input:focus,
+        textarea:focus,
+        select:focus {
+            border-color: #4f8dd9;
+        }
+
+        input::placeholder,
+        textarea::placeholder {
+            color: #555d6e;
+        }
+
+        textarea {
+            min-height: 110px;
+            resize: vertical;
+        }
+
+        select {
+            cursor: pointer;
+        }
+
+        .btn-send {
+            width: 100%;
+            padding: 0.7rem;
+            border: none;
+            border-radius: 6px;
+            background: #4f8dd9;
+            color: #fff;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            margin-top: 0.3rem;
+        }
+
+        .btn-send:hover {
+            background: #3f7ac4;
+        }
+
+        /* sidebar */
+        .contact-side {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .side-card {
+            background: #181b22;
+            border: 1px solid #222631;
+            border-radius: 10px;
+            padding: 1.5rem;
+        }
+
+        .side-card:hover {
+            border-color: #333a4a;
+        }
+
+        .side-card h3 {
+            font-size: 1rem;
+            color: #e4e8ef;
+            margin-bottom: 0.3rem;
+        }
+
+        .side-card h5 {
+            font-size: 0.8rem;
+            color: #6b7385;
+            font-weight: 400;
+            margin-bottom: 0.8rem;
+        }
+
+        .socials {
+            list-style: none;
+        }
+
+        .socials li {
+            margin-bottom: 0.4rem;
+        }
+
+        .socials li a {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.55rem 0.8rem;
+            border-radius: 6px;
+            color: #9aa1af;
+            font-size: 0.88rem;
+            background: #1e222b;
+            border: 1px solid #272c38;
+        }
+
+        .socials li a:hover {
+            color: #7eb8f0;
+            border-color: #3a4050;
+            text-decoration: none;
+        }
+
+        .socials .icon {
+            width: 1.3rem;
+            text-align: center;
+            font-size: 1rem;
+        }
+
+        /* info list */
+        .info-list {
+            list-style: none;
+        }
+
+        .info-list li {
+            display: flex;
+            gap: 0.5rem;
+            padding: 0.4rem 0;
+            border-bottom: 1px solid #1e222b;
+            font-size: 0.85rem;
+            color: #9aa1af;
+        }
+
+        .info-list li:last-child {
+            border-bottom: none;
+        }
+
+        .info-list li strong {
+            color: #cdd4de;
+            min-width: 85px;
+        }
+
+        /* table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 0.8rem;
+        }
+
+        th {
+            text-align: left;
+            padding: 0.45rem 0.6rem;
+            font-size: 0.7rem;
+            color: #6b7385;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            border-bottom: 1px solid #272c38;
+        }
+
+        td {
+            padding: 0.4rem 0.6rem;
+            color: #9aa1af;
+            font-size: 0.82rem;
+            border-bottom: 1px solid #1e222b;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+
+
+        footer {
+            border-top: 1px solid #222631;
+            text-align: center;
+            padding: 1.8rem;
+            margin-top: 3rem;
+        }
+
+        footer p {
+            color: #555d6e;
+            font-size: 0.82rem;
+        }
+
+        @media (max-width: 700px) {
+            .contact-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .page-title h1 {
+                font-size: 1.7rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="../index.html" class="logo">Teo.</a>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="gallery.html">Galeri</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="contact.html" class="on">Kontak</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-title">
+            <h1>Kontak</h1>
+            <p>Untuk diskusi terkait proyek, penawaran kolaborasi, maupun pertanyaan teknis lainnya.</p>
+        </section>
+
+        <section class="contact-layout">
+            <!-- form -->
+            <div class="form-box">
+                <p class="form-subtitle">Kirim pesan</p>
+                <h2>Formulir Kontak</h2>
+                <p>Silakan isi formulir di bawah ini. Saya akan merespons dalam rentang waktu 1-2 hari kerja.</p>
+                <form action="#" method="post">
+                    <div class="form-row">
+                        <div class="field">
+                            <label for="nama">Nama <span>*</span></label>
+                            <input type="text" id="nama" name="nama" placeholder="Nama Anda" required>
+                        </div>
+                        <div class="field">
+                            <label for="email">Email <span>*</span></label>
+                            <input type="email" id="email" name="email" placeholder="email@contoh.com" required>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label for="subjek">Subjek</label>
+                        <select id="subjek" name="subjek">
+                            <option value="" disabled selected>Pilih topik</option>
+                            <option value="kolaborasi">Kolaborasi proyek</option>
+                            <option value="tanya">Pertanyaan</option>
+                            <option value="freelance">Freelance</option>
+                            <option value="lain">Lainnya</option>
+                        </select>
+                    </div>
+                    <div class="field">
+                        <label for="pesan">Pesan <span>*</span></label>
+                        <textarea id="pesan" name="pesan" placeholder="Tulis pesan di sini..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn-send">Kirim</button>
+                </form>
+            </div>
+
+            <!-- sidebar -->
+            <aside class="contact-side">
+                <div class="side-card">
+                    <h3>Sosial Media dan GitHub</h3>
+                    <h5>Channel komunikasi alternatif</h5>
+                    <ul class="socials">
+                        <li><a href="https://github.com/Lockon732" target="_blank" rel="noopener"><span
+                                    class="icon">GH</span> GitHub @Lockon732</a></li>
+                        <li><a href="https://instagram.com/exor7777" target="_blank" rel="noopener"><span
+                                    class="icon">IG</span> Instagram @exor7777</a></li>
+                        <li><a href="mailto:timmothealandeng026@student.unsrat.ac.id"><span class="icon">@</span>
+                                timmothealandeng026@student.unsrat.ac.id</a></li>
+                    </ul>
+                </div>
+
+                <div class="side-card">
+                    <h3>Info</h3>
+                    <ul class="info-list">
+                        <li><strong>Lokasi</strong> Manado, Indonesia</li>
+                        <li><strong>Status</strong> Mahasiswa</li>
+                        <li><strong>Freelance</strong> Terbuka</li>
+                        <li><strong>Timezone</strong> GMT+8</li>
+                    </ul>
+                    <h5 style="margin-top: 1rem; margin-bottom: 0.3rem;">Estimasi waktu balas</h5>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Platform</th>
+                                <th>Biasanya</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Email</td>
+                                <td>1–2 hari</td>
+                            </tr>
+                            <tr>
+                                <td>Instagram DM</td>
+                                <td>Sehari</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+
+            </aside>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Teo</p>
+    </footer>
+</body>
+
+</html>
